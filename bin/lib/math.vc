@@ -1,0 +1,266 @@
+/*
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+MATH.VC
+Math Library
+Developed by: Alex Ayers
+AYERSLABS 2009
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+*/
+
+function float cos(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 1
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float sin(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 2
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float tan(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 3
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float acos(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 4
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float asin(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 5
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float atan(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 6
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float atan2(float x, float y)
+{
+	float flt = 0.0; 
+	
+	__vasm
+	{
+		movf fax x
+		movf fbx y
+		mov ix 7
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float cosh(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 8
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float sinh(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 9
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float tanh(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 10
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float exp(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 11
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float log(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 12
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float log10(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 13
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float pow(float base, float exponent)
+{
+	float flt = 0.0;
+	
+	__vasm
+	{	
+		movf fax base
+		movf fbx exponent
+		mov ix 14
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float sqrt(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 15
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float ceil(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 16
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float fabs(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 17
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}
+
+function float floor(float flt)
+{
+	__vasm
+	{
+		movf fax flt
+		mov ix 18
+		int 16
+		
+		movf flt fax
+	}
+	
+	return flt;
+}

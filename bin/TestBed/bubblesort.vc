@@ -1,0 +1,55 @@
+/*
+Bubble Sort Implementation
+*/
+
+function int Main(int argc, array <string,*> argv)
+{	
+	array <int, 6> bubble;
+	int i = 0,j;
+	int temp,b1,b2;
+	
+	bubble[0] = 84;
+	bubble[1] = 69;
+	bubble[2] = 76;
+	bubble[3] = 86;
+	bubble[4] = 94;
+	bubble[5] = 91;
+	
+	cout << "Unsorted numbers" << endl;
+	
+	while (i < 6)
+	{
+		cout << bubble[i] << endl;
+		i++;
+	}
+	
+	i = 0;
+	
+	/* Actual Bubble Sort */
+		
+	for (int k = 0; k < 6; k++)
+	{
+	   for (int l = 0; l < 5; l++)
+		{
+			if (bubble[l] > bubble[l+1])
+			{
+			   temp = bubble[l];
+			   bubble[l] = bubble[l+1];
+			   bubble[l+1] = temp;
+			}
+		}
+	}
+	
+	i = 0;
+	
+	cout << "Sorted numbers" << endl;
+	
+	while (i < 6)
+	{
+	 cout << bubble[i] << endl;
+	 i++;
+	}
+	
+	return 0;
+}
+

@@ -1,0 +1,239 @@
+/*
+Example game of TicTacToe
+
+*/
+
+function void GetPlayerNames();
+function void InitGame();
+function void DrawBoard();
+function void GetPlayerMove(int player);
+function bool CheckPosition(int player,int position);
+function bool CheckForWinX();
+function bool CheckForWinO();
+
+function int Main(int argc, array <string,*> argv)
+{
+  global string Player1,Player2;
+  global array <string,9> board;
+  bool no_winner = true;
+  int total_moves;
+  
+  InitGame();
+  GetPlayerNames();
+  DrawBoard();
+ 
+  while (no_winner)
+  {
+    GetPlayerMove(1);
+	total_moves++;
+	DrawBoard(); 
+	
+	no_winner = CheckForWinX();
+	
+	if (no_winner && total_moves == 9)
+	{
+	  cout << "It was a tie game." << endl;
+	  no_winner = false;
+	}
+	else if (no_winner)
+	{
+		GetPlayerMove(2);
+		total_moves++;
+		DrawBoard();
+		no_winner = CheckForWinO();
+	}
+  }
+  
+  cout << "The Game is over!" << endl;
+   
+  return 0;
+}
+
+function bool CheckForWinX()
+{
+  if (board[0] == "X" && board[1] == "X" && board[2] == "X")
+  {
+     cout << Player1 << " has won the game on first row." << endl;
+	 return false;
+  }
+  else if (board[3] == "X" && board[4] == "X" && board[5] == "X")
+  {
+     cout << Player1 << " has won the game on second row."<< endl;
+	 return false;
+  }
+  else if (board[6] == "X" && board[7] == "X" && board[8] == "X")
+  {
+     cout << Player1 << " has won the game on last row."<< endl;
+	 return false;
+  }
+  else if (board[0] == "X" && board[4] == "X" && board[8] == "X")
+  {
+     cout << Player1 << " has won the game on the first diagonal."<< endl;
+	 return false;
+  }
+  else if (board[6] == "X" && board[4] == "X" && board[2] == "X")
+  {
+     cout << Player1 << " has won the game on the second diagonal."<< endl;
+	 return false;
+  }
+  else if (board[0] == "X" && board[3] == "X" && board[6] == "X")
+  {
+     cout << Player1 << " has won the game on first column."<< endl;
+	 return false;
+  }
+  else if (board[1] == "X" && board[4] == "X" && board[7] == "X")
+  {
+     cout << Player1 << " has won the game on second column."<< endl;
+	 return false;
+  }
+  else if (board[2] == "X" && board[5] == "X" && board[8] == "X")
+  {
+     cout << Player1 << " has won the game on last column."<< endl;
+	 return false;
+  }
+  
+  return true;
+}
+
+function bool CheckForWinO()
+{
+  if (board[0] == "O" && board[1] == "O" && board[2] == "O")
+  {
+     cout << Player2 << " has won the game on first row."<< endl;
+	 return false;
+  }
+  else if (board[3] == "O" && board[4] == "O" && board[5] == "O")
+  {
+     cout << Player2 << " has won the game on second row."<< endl;
+	 return false;
+  }
+  else if (board[6] == "O" && board[7] == "O" && board[8] == "O")
+  {
+     cout << Player2 << " has won the game on last row."<< endl;
+	 return false;
+  }
+  else if (board[0] == "O" && board[4] == "O" && board[8] == "O")
+  {
+     cout << Player2 << " has won the game on the first diagonal."<< endl;
+	 return false;
+  }
+  else if (board[6] == "O" && board[4] == "O" && board[2] == "O")
+  {
+     cout << Player2 << " has won the game on the second diagonal."<< endl;
+	 return false;
+  }
+  else if (board[0] == "O" && board[3] == "O" && board[6] == "O")
+  {
+     cout << Player2 << " has won the game on first column."<< endl;
+	 return false;
+  }
+  else if (board[1] == "O" && board[4] == "O" && board[7] == "O")
+  {
+     cout << Player2 << " has won the game on second column."<< endl;
+	 return false;
+  }
+  else if (board[2] == "O" && board[5] == "O" && board[8] == "O")
+  {
+     cout << Player2 << " has won the game on last column."<< endl;
+	 return false;
+  }
+  
+  return true;
+}
+
+function void GetPlayerMove(int player)
+{
+   int position;
+   bool invalid_position = true;
+   
+   while (invalid_position)
+   {
+        if (player == 1)
+		{
+			cout << Player1 << " please make your move: ";
+		}
+		else
+		{
+			cout << Player2 << " please make your move: ";
+		}
+		
+		cin >> position;
+		invalid_position = CheckPosition(player,position);
+	}
+   
+	return;
+}
+
+function bool CheckPosition(int player, int position)
+{
+   if (position <= 0)
+   {
+     return true;
+   }
+   else if (board[position-1] == "X" || board[position-1] == "O")
+   {
+      return true;
+   }
+   else
+   {
+     if (player == 1)
+	 {
+	   board[position-1] = "X";
+	 }
+	 else
+	 {
+	   board[position-1] = "O";
+	 }
+     return false;
+   }
+}
+
+function void DrawBoard()
+{
+   int x,i = 0;
+   
+   while (i < 9)
+   {
+      x = i%3; // This is a lame workaround.
+	  
+	  if (x == 0)
+	  {
+	    cout << endl;
+	  }
+	  
+	  cout << board[i];
+	  
+      i++;
+   }
+   
+   cout << endl;
+
+   return;
+}
+
+function void InitGame()
+{
+  Player1 = " ";
+  Player2 = " ";
+  
+  board[0] = "1";
+  board[1] = "2";
+  board[2] = "3";
+  board[3] = "4";
+  board[4] = "5";
+  board[5] = "6";
+  board[6] = "7";
+  board[7] = "8";
+  board[8] = "9";
+ 
+  return;
+}
+
+function void GetPlayerNames()
+{
+  cout << "Player1: ";
+  cin >> Player1;
+  cout << "Player2: ";
+  cin >> Player2;
+  return;
+}

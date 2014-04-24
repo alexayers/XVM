@@ -1,0 +1,96 @@
+/*
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+STRING.VC
+String Library
+Developed by: Alex Ayers
+AYERSLABS 2009
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+*/
+
+
+function int strlen(string str)
+{
+  int size;
+  
+  __vasm
+  {
+     movs sax str
+	 mov ix 0
+	 int 7
+	 
+	 mov size ax
+  }
+  
+  return size;
+}
+
+function string substr(string str, int start, int end)
+{
+	__vasm
+	{
+		movs sax str
+		mov ax start
+		mov bx end
+		mov ix 1
+		int 7
+		
+		movs str sax
+	}
+
+	return str;
+}
+
+function string strtolower(string str)
+{
+	__vasm
+	{
+		movs sax str
+		mov ix 2
+		int 7
+		
+		movs str sax
+	}
+	
+	return str;
+}
+
+function string strtoupper(string str)
+{
+	__vasm
+	{
+		movs sax str
+		mov ix 3
+		int 7
+		
+		movs str sax
+	}
+	
+	return str;
+}
+
+function string strreplace(string str, string find, string replace)
+{
+	__vasm
+	{
+		movs sax find
+		movs sbx replace
+		movs scx str
+		mov ix 4
+		int 7
+		
+		movs str sax
+	}
+	
+	return str;
+}
+
+function int strstr(string str, string haystack, string needle)
+{
+	return 0;
+}
+
+
+
+
+
+

@@ -1,0 +1,118 @@
+/*
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+MEMORY.VC
+Virtual RAM Library
+Developed by: Alex Ayers
+AYERSLABS 2009
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+*/
+
+function int mem()
+{
+	int mem = 0;
+	
+	__vasm
+	{
+		mov ix 0
+		int 11
+		mov ax mem
+	}
+	
+	return mem;
+}
+
+function int memused()
+{
+	int mem = 0;
+	
+	__vasm
+	{
+		mov ix 1
+		int 11
+		mov ax mem
+	}
+	
+	return mem;
+}
+
+function int memfetches()
+{
+	int mem = 0;
+	
+	__vasm
+	{
+		mov ix 2
+		int 11
+		mov ax mem
+	}
+	
+	return mem;
+}
+
+function int memmisses()
+{
+	int mem = 0;
+	
+	__vasm
+	{
+		mov ix 3
+		int 11
+		mov ax mem
+	}
+	
+	return mem;
+}
+
+function void memflush()
+{
+	__vasm
+	{
+		mov ix 4
+		int 11
+	}
+	
+	return;
+}
+
+function int memfetch(int pos)
+{
+	int mem = 0;
+	
+	__vasm
+	{
+		mov ax pos
+		mov ix 5
+		int 11
+		mov ax mem
+	}
+	
+	return mem;
+}
+
+function int memsets()
+{
+	int mem = 0;
+	
+	__vasm
+	{
+		mov ix 6
+		int 11
+		mov ax mem
+	}
+	
+	return mem;
+}
+
+function int memunsets()
+{
+	int mem = 0;
+	
+	__vasm
+	{
+		mov ix 7
+		int 11
+		mov ax mem
+	}
+	
+	return mem;
+}

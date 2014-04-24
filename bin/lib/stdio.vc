@@ -1,0 +1,119 @@
+/*
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+STDIO.VC
+Standard Input / Output Library
+Developed by: Alex Ayers
+AYERSLABS 2009
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+*/
+
+function int fopen(string filename, string param)
+{
+	int fp;
+	
+	__vasm
+	{
+	   movs sax filename
+	   movs sbx param
+	   mov ix 0
+	   int 4
+	   
+	   mov fp ax
+	}
+	
+	return fp;
+}
+
+
+function bool fclose(int fp)
+{
+	__vasm
+	{
+		mov ax fp
+		mov ix 1
+		int 4
+	}
+	
+	return true;
+}
+
+function bool feof(int fp)
+{
+	int eof;
+	
+	__vasm
+	{
+		mov ax fp
+		mov ix 8
+		int 4
+		
+		mov eof ax
+	}
+	
+	return true;
+}
+
+function bool fail(int fp)
+{
+	return true;
+}
+
+function string fgetc(int fp)
+{
+	return "null";
+}
+
+function string fgets(int fp)
+{
+	return "null";
+}
+
+function string fread(int fp, int size)
+{
+	string buffer;
+	
+	__vasm
+	{
+		mov ax fp
+		mov bx size
+		mov ix 3
+		int 4
+		
+		movs buffer sax
+		
+	}
+	
+	return buffer;
+}
+
+function void fwrite(int fp)
+{
+	return;
+}
+
+function string fpeek(int fp)
+{
+	return "null";
+}
+
+function int ftell(int fp)
+{
+	int pos;
+	
+	__vasm
+	{
+		mov ax fp
+		mov ix 6
+		int 4
+		
+		mov pos ax
+	}
+	
+	return pos;
+}
+
+function int fset(int fp, int pos)
+{
+	return 0;
+}
+

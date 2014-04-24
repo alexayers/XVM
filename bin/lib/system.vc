@@ -1,0 +1,63 @@
+/*
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+SYSTEM.VC
+System Library
+Developed by: Alex Ayers
+AYERSLABS 2009
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+*/
+function int tickcount()
+{
+	int count;
+	
+	__vasm
+	{
+		mov ix 0
+		int 1
+		mov count ax
+	}
+	
+	return count;
+}
+
+function string osinfo()
+{
+	string os;
+	__vasm
+	{
+		mov ix 1
+		int 1
+		movs os sax
+	}
+	
+	return os;
+}
+
+function string cpuinfo()
+{
+	string cpu;
+	__vasm
+	{
+		mov ix 2
+		int 1
+		movs cpu sax
+	}
+	
+	return cpu;
+}
+
+function string meminfo()
+{
+	string mem;
+	
+	__vasm
+	{
+		mov ix 3
+		int 1
+		movs mem sax
+	}
+	
+	return mem;
+}
+
+

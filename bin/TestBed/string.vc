@@ -1,0 +1,29 @@
+/*
+This program demonstrates strings.
+*/
+
+#include "c:\AyersLabs\bin\inc\string.vh"
+
+function int Main(int argc, array <string,*> argv)
+{
+	string Hello = "Hello World!";
+	string Bye = "Goodbye";
+
+	cout << Hello[0] << endl;
+	cout << strtoupper(Hello) << endl;
+	cout << strtoupper(Hello[1+2]) << endl;
+	
+	for (int i = strlen(Hello); i >= 0; i--)
+	{
+		cout << Hello[i] << endl;
+	}
+	
+	Hello = substr(Hello,0,5);
+	cout << Hello << endl;
+	Hello += Bye;
+	cout << Hello << endl;
+
+	return 0;
+}
+
+

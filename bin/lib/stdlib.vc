@@ -1,0 +1,104 @@
+/*
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+STDLIB.VC
+Standard Library
+Developed by: Alex Ayers
+AYERSLABS 2009
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+*/
+
+function int atoi(string str)
+{
+	int digit = 0;
+	__vasm
+	{
+		csi str
+		mov digit ax
+	}
+	
+	return digit;
+}
+
+function string itoa(int num)
+{
+	string str;
+	
+	__vasm
+	{
+		cis num
+		movs str sax
+	}
+	
+	return str;
+}
+
+function string ftoa(float num)
+{
+	string str;
+	
+	__vasm
+	{
+		cfs num
+		movs str sax
+	}
+	
+	return str;
+}
+
+function float itof(int num)
+{
+	float fp;
+	
+	__vasm
+	{
+		cif num
+		movf fp fax
+	}
+	
+	return fp;
+}
+
+function float stof(int num)
+{
+	float fp;
+	
+	__vasm
+	{
+		csf num
+		movf fp fax
+	}
+	
+	return fp;
+}
+
+function int rand()
+{
+	int random;
+	
+	__vasm
+	{
+		mov ix 0
+		int 16
+		
+		mov random ax
+	}
+
+	return random;
+}
+
+function void sleep(int milliseconds)
+{	
+	__vasm
+	{
+		mov ax milliseconds
+		mov ix 4
+		int 1
+	}
+	
+	return;
+}
+
+function void exit()
+{
+	return;
+}

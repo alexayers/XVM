@@ -1,0 +1,43 @@
+/*
+This program demonstrates scoping rules.
+
+
+*/
+
+function void Scope(int x); 
+
+function int Main(int argc, array <string,*> argv)
+{
+	string hello;
+	int x = 0;
+	bool flag = true;
+	array <int, 10> myarray;
+	
+	cout << "X is incremented by 1." << endl;
+	cout << "Main equation: x * 10" << endl;
+	cout << "Scope equation: x*2" << endl;
+	  
+	while (flag)
+	{
+		myarray[x] = x * 10;
+		cout << "Main: " << x << " * 10 " << " = " << myarray[x] << endl;
+		Scope(x);
+		x++;
+		
+		if (x == 10)
+		{ 
+			flag = false;
+		}
+	}
+	
+  return 0;
+}
+
+function void Scope(int x)
+{
+	
+	cout << "X From Scope: " << x << " * 2 =  ";
+	x *= 2;
+	cout << x << endl;
+	return;
+}

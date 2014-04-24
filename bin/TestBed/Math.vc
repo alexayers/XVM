@@ -1,0 +1,27 @@
+/*
+This program demonstrates math library.
+*/
+
+#include "c:\AyersLabs\bin\inc\math.vh"
+
+function int Main(int argc, array <string,*> argv)
+{
+	float param = 4.0;
+	float PI = 3.14159265;
+	float sq = sqrt(param); 
+	
+	cout << "Examples of Math Library" << endl;
+
+	param = 60.0*PI/180;
+	cout << "cos(60.0*PI/180.0) = " << cos(param) << endl;
+	cout << "7^3 = " << pow(7.0,3.0) << endl;
+	cout << "sqrt(4.0) = " << sq << endl;
+	
+
+		
+  return 0;
+}
+
+
+
+

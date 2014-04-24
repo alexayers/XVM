@@ -1,0 +1,159 @@
+/*
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+DATE.VC
+Date & Time Library
+Developed by: Alex Ayers
+AYERSLABS 2009
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+*/
+
+function string time()
+{
+	string now = "";
+	
+	__vasm
+	{
+		mov ix 0
+		int 18
+		
+		movs now sax
+	}
+	
+	return now;
+}
+
+function string date()
+{
+	string now = "";
+	
+	__vasm
+	{
+		mov ix 1
+		int 18
+		
+		movs now sax
+	}
+	
+	return now;
+}
+
+function int hour()
+{
+	int hour = 0;
+	
+	__vasm
+	{
+		mov ix 2
+		int 18
+		
+		mov hour ax
+	}
+	
+	return hour;
+}
+
+function int minute()
+{
+	int minute = 0;
+	
+	__vasm
+	{
+		mov ix 3
+		int 18
+		
+		mov minute ax
+	}
+	
+	return minute;
+}
+
+function int second()
+{
+	int second = 0;
+	
+	__vasm
+	{
+		mov ix 4
+		int 18
+		
+		mov second ax
+	}
+	
+	return second;
+}
+
+function int millisecond()
+{
+	int millisecond = 0;
+	
+	__vasm
+	{
+		mov ix 5
+		int 18
+		
+		mov millisecond ax
+	}
+	
+	return millisecond;
+}
+
+function int ampm()
+{
+	int ampm = 0;
+	
+	__vasm
+	{
+		mov ix 6
+		int 18
+		
+		mov ampm ax
+	}
+	
+	return ampm;
+}
+
+function int month()
+{
+	int month = 0;
+	
+	__vasm
+	{
+		mov ix 7
+		int 18
+		
+		mov month ax
+	}
+	
+	return month;
+}
+
+function int day()
+{
+	int day = 0;
+	
+	__vasm
+	{
+		mov ix 8
+		int 18
+		
+		mov day ax
+	}
+	
+	return day;
+}
+
+function int year()
+{
+	int year = 0;
+	
+	__vasm
+	{
+		mov ix 9
+		int 18
+		
+		mov year ax
+	}
+	
+	return year;
+}
+
